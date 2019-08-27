@@ -9,10 +9,7 @@ RUN apk add --update --no-cache \
     curl \
     bzip2-dev \
     bash \
-    python2 \
     python3 \
-    py2-pip \
-    python2-dev \
     python3-dev \
     libffi-dev \
     ruby \
@@ -24,8 +21,8 @@ RUN apk add --update --no-cache \
     sqlite-dev \
     zlib-dev
 
-RUN pip install --no-cache-dir virtualenv \
- && pip install --no-cache-dir tox \
+RUN pip3 install --no-cache-dir virtualenv \
+ && pip3 install --no-cache-dir tox \
  && addgroup -g 3434 circleci \
  && adduser -D -u 3434 -G circleci -s /bin/bash circleci
 
@@ -41,7 +38,6 @@ ENV LANG=C.UTF-8 \
 
 RUN git clone --depth 1 https://github.com/pyenv/pyenv.git $PYENV_HOME \
     && rm -rfv $PYENV_HOME/.git \
-    && pyenv install 2.7-dev \
     && pyenv install 3.6-dev \
     && pyenv install 3.7-dev
 
