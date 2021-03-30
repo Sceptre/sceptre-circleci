@@ -1,4 +1,4 @@
-FROM alpine:3.11
+FROM alpine:3.13
 
 RUN apk add --update --no-cache \
     patch \
@@ -9,6 +9,7 @@ RUN apk add --update --no-cache \
     curl \
     bzip2-dev \
     bash \
+    py3-pip \
     python3 \
     python3-dev \
     libffi-dev \
@@ -19,7 +20,9 @@ RUN apk add --update --no-cache \
     readline-dev \
     openssl-dev \
     sqlite-dev \
-    zlib-dev
+    zlib-dev \
+    rust \
+    cargo
 
 RUN pip3 install --no-cache-dir virtualenv \
  && pip3 install --no-cache-dir tox \
