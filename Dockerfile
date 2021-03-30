@@ -19,9 +19,12 @@ RUN apk add --update --no-cache \
     readline-dev \
     openssl-dev \
     sqlite-dev \
-    zlib-dev
+    zlib-dev \
+    rust \
+    cargo
 
-RUN pip3 install --no-cache-dir virtualenv \
+RUN pip3 install --no-cache-dir --upgrade pip \
+ && pip3 install --no-cache-dir virtualenv \
  && pip3 install --no-cache-dir tox \
  && addgroup -g 3434 circleci \
  && adduser -D -u 3434 -G circleci -s /bin/bash circleci
