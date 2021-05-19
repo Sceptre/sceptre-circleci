@@ -47,4 +47,7 @@ RUN git clone --depth 1 https://github.com/pyenv/pyenv.git $PYENV_HOME \
     && pyenv install 3.9.4 \
     && pyenv global system 3.6.13 3.7.10 3.8.9 3.9.4
 
+# Install the latest Poetry
+RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
+
 CMD ["/bin/sh"]
