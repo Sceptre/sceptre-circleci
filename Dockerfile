@@ -37,7 +37,7 @@ ARG PYENV_HOME=/home/circleci/.pyenv
 
 ENV LANG=C.UTF-8 \
     HOME=/home/circleci \
-    PATH=$PYENV_HOME/shims:$PYENV_HOME/bin:$PATH
+    PATH=$PYENV_HOME/shims:$PYENV_HOME/bin:/home/circleci/.poetry/bin:$PATH
 
 RUN git clone --depth 1 https://github.com/pyenv/pyenv.git $PYENV_HOME \
     && rm -rfv $PYENV_HOME/.git \
