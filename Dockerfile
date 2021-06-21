@@ -22,7 +22,8 @@ RUN apk add --update --no-cache \
     sqlite-dev \
     zlib-dev \
     rust \
-    cargo
+    cargo \
+    go
 
 RUN pip3 install --no-cache-dir virtualenv \
     && pip3 install --no-cache-dir tox \
@@ -37,7 +38,9 @@ ARG PYENV_HOME=/home/circleci/.pyenv
 
 ENV LANG=C.UTF-8 \
     HOME=/home/circleci \
-    PATH=$PYENV_HOME/shims:$PYENV_HOME/bin:/home/circleci/.poetry/bin:$PATH
+    GOROOT=/usr/lib/go \
+    GOPATH=/go \
+    PATH=$PYENV_HOME/shims:$PYENV_HOME/bin:/home/circleci/.poetry/bin:/go/bin:$PATH
 
 RUN git clone --depth 1 https://github.com/pyenv/pyenv.git $PYENV_HOME \
     && rm -rfv $PYENV_HOME/.git \
