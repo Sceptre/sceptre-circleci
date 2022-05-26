@@ -11,6 +11,8 @@ jobs:
   build-docker-image:
     executor: docker-publisher
     steps:
+      - setup_remote_docker:
+          version: 20.10.14
       - checkout
       - setup_remote_docker
       - run:
