@@ -31,7 +31,8 @@ jobs:
     steps:
       - attach_workspace:
           at: /tmp/workspace
-      - setup_remote_docker
+      - setup_remote_docker:
+          version: 20.10.14
       - run:
           name: Load Docker image archive
           command: docker load -i /tmp/workspace/image.tar
@@ -46,7 +47,8 @@ jobs:
     steps:
       - attach_workspace:
           at: /tmp/workspace
-      - setup_remote_docker
+      - setup_remote_docker:
+          version: 20.10.14
       - run:
           name: Load archived Docker image
           command: docker load -i /tmp/workspace/image.tar
