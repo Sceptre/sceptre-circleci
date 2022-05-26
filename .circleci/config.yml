@@ -59,7 +59,7 @@ jobs:
             docker push $IMAGE_NAME:$IMAGE_TAG
 
 workflows:
-  check-pr:
+  validate:
     jobs:
       - build-docker-image:
           filters:
