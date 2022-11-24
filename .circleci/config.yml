@@ -3,7 +3,7 @@ version: 2.1
 executors:
   docker-publisher:
     environment:
-      IMAGE_NAME: cloudreach/sceptre-circleci
+      IMAGE_NAME: sceptreorg/sceptre-circleci
     docker:
       - image: cimg/base:2022.05
 
@@ -75,7 +75,7 @@ workflows:
             branches:
               ignore: /^pull\/.*/
       - deploy-latest-dockerhub:
-          context: sceptre-core
+          context: sceptreorg-dockerhub
           requires:
             - build-docker-image
           filters:
@@ -90,7 +90,7 @@ workflows:
             branches:
               ignore: /.*/
       - deploy-dockerhub-tagged:
-          context: sceptre-core
+          context: sceptreorg-dockerhub
           requires:
             - build-docker-image
           filters:

@@ -50,6 +50,6 @@ RUN git clone --depth 1 https://github.com/pyenv/pyenv.git $PYENV_HOME \
 
 
 # Install the latest Poetry
-RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
+RUN curl -sSL https://install.python-poetry.org | python -
 
 CMD ["/bin/sh"]
