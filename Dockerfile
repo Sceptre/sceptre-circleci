@@ -22,7 +22,9 @@ RUN apk add --update --no-cache \
     sqlite-dev \
     zlib-dev \
     rust \
-    cargo
+    cargo \
+    nodejs \
+    npm
 
 RUN pip3 install --no-cache-dir virtualenv \
     && pip3 install --no-cache-dir tox \
