@@ -1,55 +1,9 @@
-FROM alpine:3.16
+FROM cimg/python:3.11.1-node
 
-RUN apk add --update --no-cache \
-    patch \
-    git \
-    openssh \
-    ca-certificates \
-    build-base \
-    curl \
-    bzip2-dev \
-    bash \
-    py3-pip \
-    python3 \
-    python3-dev \
-    libffi-dev \
-    ruby \
-    ruby-dev \
-    ruby-bundler \
-    ruby-json \
-    readline-dev \
-    openssl-dev \
-    sqlite-dev \
-    zlib-dev \
-    rust \
-    cargo
-
-RUN pip3 install --no-cache-dir virtualenv \
-    && pip3 install --no-cache-dir tox \
-    && addgroup -g 3434 circleci \
-    && adduser -D -u 3434 -G circleci -s /bin/bash circleci
-
-USER circleci
-
-WORKDIR /home/circleci
-
-ARG PYENV_HOME=/home/circleci/.pyenv
-
-ENV LANG=C.UTF-8 \
-    HOME=/home/circleci \
-    PATH=$PYENV_HOME/shims:$PYENV_HOME/bin:/home/circleci/.poetry/bin:$PATH
-
-RUN git clone --depth 1 https://github.com/pyenv/pyenv.git $PYENV_HOME \
-    && git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv \
-    && rm -rfv $PYENV_HOME/.git \
-    && pyenv install 3.7.10 \
+RUN pyenv install 3.7.10 \
     && pyenv install 3.8.9 \
     && pyenv install 3.9.4 \
     && pyenv install 3.10.4 \
     && pyenv global system 3.7.10 3.8.9 3.9.4 3.10.4
-
-
-# Install the latest Poetry
-RUN curl -sSL https://install.python-poetry.org | python -
 
 CMD ["/bin/sh"]
