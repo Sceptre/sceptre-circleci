@@ -1,4 +1,4 @@
-FROM cimg/python:3.11.1-node
+FROM cimg/python:3.12.0-node
 
 RUN pyenv install 3.8.16 \
     && pyenv install 3.9.16 \
