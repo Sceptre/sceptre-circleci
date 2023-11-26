@@ -1,9 +1,9 @@
 FROM cimg/python:3.12.0-node
 
-RUN pyenv install 3.8.16 \
-    && pyenv install 3.9.16 \
-    && pyenv install 3.10.9 \
-    && pyenv install 3.11.1 \
-    && pyenv global system 3.8.16 3.9.16 3.10.9 3.11.1
+RUN pyenv install $(pyenv latest --known 3.8)
+RUN pyenv install $(pyenv latest --known 3.9)
+RUN pyenv install $(pyenv latest --known 3.10)
+RUN pyenv install $(pyenv latest --known 3.11)
+RUN pyenv global system $(pyenv versions --bare)
 
 CMD ["/bin/sh"]
